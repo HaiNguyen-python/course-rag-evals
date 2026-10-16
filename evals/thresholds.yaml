@@ -1,0 +1,6 @@
+# Minimum scores for the hybrid setup. CI fails if any metric drops below these.
+hit_rate_at_k: 0.85
+answer_rate: 0.80
+refusal_rate: 0.80
+citation_ok: 0.95
+grounded: 0.80

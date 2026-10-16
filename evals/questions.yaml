@@ -1,0 +1,130 @@
+# Evaluation set: each answerable question lists the document(s) that contain the answer.
+# `answerable: false` questions are NOT covered by the course material; the assistant must refuse.
+questions:
+  - id: q01
+    question: What does the bronze layer store?
+    expected_docs: [01-medallion-architecture]
+  - id: q02
+    question: What should happen to rows that fail validation in the silver layer?
+    expected_docs: [01-medallion-architecture]
+  - id: q03
+    question: Who reads from the gold layer?
+    expected_docs: [01-medallion-architecture]
+  - id: q04
+    question: What does it mean for a pipeline to be idempotent?
+    expected_docs: [01-medallion-architecture, 04-orchestration-airflow]
+  - id: q05
+    question: When is batch processing a good fit?
+    expected_docs: [02-batch-vs-streaming]
+  - id: q06
+    question: What is the difference between event time and processing time?
+    expected_docs: [02-batch-vs-streaming]
+  - id: q07
+    question: What is a watermark used for in stream processing?
+    expected_docs: [02-batch-vs-streaming]
+  - id: q08
+    question: How are exactly-once results usually achieved?
+    expected_docs: [02-batch-vs-streaming]
+  - id: q09
+    question: Which delivery guarantee can create duplicates?
+    expected_docs: [02-batch-vs-streaming]
+  - id: q10
+    question: Name the common dimensions of data quality.
+    expected_docs: [03-data-quality]
+  - id: q11
+    question: What tests are typical for a primary key?
+    expected_docs: [03-data-quality]
+  - id: q12
+    question: What is a data contract?
+    expected_docs: [03-data-quality]
+  - id: q13
+    question: What is often the first sign that an upstream system has changed?
+    expected_docs: [03-data-quality]
+  - id: q14
+    question: What is a DAG in Airflow?
+    expected_docs: [04-orchestration-airflow]
+  - id: q15
+    question: When is a backfill safe to run?
+    expected_docs: [04-orchestration-airflow]
+  - id: q16
+    question: Why should business logic be kept outside the DAG file?
+    expected_docs: [04-orchestration-airflow]
+  - id: q17
+    question: What do Airflow sensors do?
+    expected_docs: [04-orchestration-airflow]
+  - id: q18
+    question: What is the grain of a fact table?
+    expected_docs: [05-data-modelling]
+  - id: q19
+    question: How does a type 2 slowly changing dimension keep history?
+    expected_docs: [05-data-modelling]
+  - id: q20
+    question: Why are star schemas popular with analysts?
+    expected_docs: [05-data-modelling]
+  - id: q21
+    question: What should a training run record for experiment tracking?
+    expected_docs: [06-mlops-basics]
+  - id: q22
+    question: How do you roll back a model with an MLflow alias?
+    expected_docs: [06-mlops-basics]
+  - id: q23
+    question: What PSI value indicates a significant shift?
+    expected_docs: [06-mlops-basics]
+  - id: q24
+    question: Why must a time series holdout come after the training period?
+    expected_docs: [06-mlops-basics]
+  # Paraphrased questions: different words from the source text, harder for keyword search.
+  - id: p01
+    question: Where do we keep the untouched copy of incoming files?
+    expected_docs: [01-medallion-architecture]
+  - id: p02
+    question: Which tier holds the cleaned-up, conformed records?
+    expected_docs: [01-medallion-architecture]
+  - id: p03
+    question: My numbers are only as recent as yesterday's job. Which approach causes that?
+    expected_docs: [02-batch-vs-streaming]
+  - id: p04
+    question: How long should the engine wait for stragglers before closing a time bucket?
+    expected_docs: [02-batch-vs-streaming]
+  - id: p05
+    question: How can I avoid counting the same message twice after a crash?
+    expected_docs: [02-batch-vs-streaming]
+  - id: p06
+    question: What agreement between a producer team and its consumers prevents surprise schema changes?
+    expected_docs: [03-data-quality]
+  - id: p07
+    question: The daily number of rows suddenly fell. What might be going on?
+    expected_docs: [03-data-quality]
+  - id: p08
+    question: Is it okay to rerun last month's jobs?
+    expected_docs: [04-orchestration-airflow]
+  - id: p09
+    question: How do I make a job wait until a file lands in object storage?
+    expected_docs: [04-orchestration-airflow]
+  - id: p10
+    question: A customer moved to a new city. How do I keep their old address for past sales?
+    expected_docs: [05-data-modelling]
+  - id: p11
+    question: What does one row in my measurements table represent?
+    expected_docs: [05-data-modelling]
+  - id: p12
+    question: How can I tell that the inputs to my model look different from before?
+    expected_docs: [06-mlops-basics]
+  - id: u01
+    question: How much does a Snowflake warehouse cost per hour?
+    answerable: false
+  - id: u02
+    question: Who won the 2026 football world cup?
+    answerable: false
+  - id: u03
+    question: How do I configure Kubernetes autoscaling for GPU nodes?
+    answerable: false
+  - id: u04
+    question: What is the capital of Australia?
+    answerable: false
+  - id: u05
+    question: Explain how transformers use self-attention.
+    answerable: false
+  - id: u06
+    question: Which Python web framework is fastest?
+    answerable: false
