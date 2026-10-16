@@ -1,0 +1,40 @@
+# make up         -> Postgres + pgvector and the API (offline: hashing embeddings, extractive answers)
+# make up-llm     -> also start Ollama and answer with a local LLM
+# API docs: http://localhost:8000/docs
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: rag
+      POSTGRES_DB: rag
+    ports: ["5433:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag"]
+      interval: 3s
+      retries: 20
+    volumes: [pgdata:/var/lib/postgresql/data]
+
+  api:
+    build: .
+    depends_on: { db: { condition: service_healthy } }
+    environment:
+      STORE: postgres
+      POSTGRES_DSN: postgresql://rag:rag@db:5432/rag
+      GENERATOR: ${GENERATOR:-extractive}
+      LLM_BASE_URL: http://ollama:11434/v1
+      LLM_MODEL: ${LLM_MODEL:-llama3.1:8b}
+      TRACES_PATH: /app/traces/traces.db
+    ports: ["8000:8000"]
+    volumes: [traces:/app/traces]
+
+  ollama:
+    image: ollama/ollama:0.3.14
+    ports: ["11434:11434"]
+    volumes: [ollama:/root/.ollama]
+    profiles: ["llm"]
+
+volumes:
+  pgdata:
+  traces:
+  ollama:
